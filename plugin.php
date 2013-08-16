@@ -8,8 +8,14 @@ Version: 1.0-beta1
 Author URI: http://daan.kortenba.ch/
 */
 
-// define( 'GENESIS_MOBILE_MENU_METHOD', 'device' );
-define( 'GENESIS_MOBILE_MENU_METHOD', 'breakpoint' );
+add_action( 'init', 'genesismm_set_method' );
+/**
+ * Define the default mobile menu method. It can be 'breakpoint' or 'device'
+ */
+function genesismm_set_method() {
+    if ( ! defined( 'GENESIS_MOBILE_MENU_METHOD' ) )
+        define( 'GENESIS_MOBILE_MENU_METHOD', 'breakpoint' );
+}
 
 add_action( 'wp_footer', 'genesis_mobile_breakpoint', $priority = 1 );
 /**
